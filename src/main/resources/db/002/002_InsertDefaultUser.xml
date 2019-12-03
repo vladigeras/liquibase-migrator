@@ -1,0 +1,13 @@
+<databaseChangeLog
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+	<changeSet id="1" author="vladi_geras">
+		<comment>Add admin user</comment>
+		<insert tableName="users">
+			<column name="username">Administrator</column>
+			<column name="password">$2y$12$eqo/gkObAQILZQHChToX7OGyhDTm9FYTcl9r6P6emYNpO9q1qNKNu</column>
+		</insert>
+	</changeSet>
+</databaseChangeLog>

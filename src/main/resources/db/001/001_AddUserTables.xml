@@ -1,0 +1,38 @@
+<databaseChangeLog
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+	<changeSet id="1" author="vladi_geras">
+		<comment>Add users table</comment>
+		<createTable tableName="users">
+			<column name="id" type="bigint" autoIncrement="true"/>
+			<column name="username" type="varchar(255)"/>
+			<column name="password" type="varchar(255)"/>
+		</createTable>
+		<addPrimaryKey tableName="users" columnNames="id"/>
+		<addUniqueConstraint tableName="users" columnNames="username"/>
+		<addNotNullConstraint tableName="users" columnName="password"/>
+		<rollback>
+			<dropTable tableName="users"/>
+		</rollback>
+	</changeSet>
+
+	<changeSet id="2" author="vladi_geras">
+		<comment>Add users roles table</comment>
+		<createTable tableName="users_roles">
+			<column name="user_id" type="bigint"/>
+			<column name="role" type="varchar(32)"/>
+		</createTable>
+		<addUniqueConstraint tableName="users_roles"
+							 columnNames="user_id, role"/>
+		<addForeignKeyConstraint baseTableName="users_roles"
+								 baseColumnNames="user_id"
+								 constraintName="fk_user_id_users"
+								 referencedTableName="users"
+								 referencedColumnNames="id"/>
+		<rollback>
+			<dropTable tableName="users_roles"/>
+		</rollback>
+	</changeSet>
+</databaseChangeLog>
