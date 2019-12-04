@@ -6,13 +6,16 @@
 	<changeSet id="1" author="vladi_geras">
 		<comment>Add users table</comment>
 		<createTable tableName="users">
-			<column name="id" type="bigint" autoIncrement="true"/>
-			<column name="username" type="varchar(255)"/>
-			<column name="password" type="varchar(255)"/>
+			<column name="id" type="bigint" autoIncrement="true">
+				<constraints primaryKey="true"/>
+			</column>
+			<column name="username" type="varchar(255)">
+				<constraints unique="true" nullable="false"/>
+			</column>
+			<column name="password" type="varchar(255)">
+				<constraints nullable="false"/>
+			</column>
 		</createTable>
-		<addPrimaryKey tableName="users" columnNames="id"/>
-		<addUniqueConstraint tableName="users" columnNames="username"/>
-		<addNotNullConstraint tableName="users" columnName="password"/>
 		<rollback>
 			<dropTable tableName="users"/>
 		</rollback>
