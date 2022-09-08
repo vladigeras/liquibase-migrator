@@ -25,7 +25,7 @@
 
 		<java.version>11</java.version>
 		<liquibase.version>3.8.2</liquibase.version>
-		<postgresql-driver.version>42.2.8</postgresql-driver.version>
+		<postgresql-driver.version>42.4.1</postgresql-driver.version>
 		<jaxb-api.version>2.3.0</jaxb-api.version>
 		<jaxb-runtime.version>2.3.0</jaxb-runtime.version>
 		<javax-activation-api.version>1.2.0</javax-activation-api.version>
